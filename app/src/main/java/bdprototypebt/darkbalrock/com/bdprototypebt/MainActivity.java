@@ -395,18 +395,14 @@ public class MainActivity extends AppCompatActivity {
                 final int estado = intent.getIntExtra(BluetoothAdapter.EXTRA_CONNECTION_STATE, BluetoothAdapter.ERROR);
                 evento = "<font color='red'>BluetoothAdapter.ACTION_CONNECTION_STATE_CHANGED :" + estado;
                 log += logAdapter(uriData, evento);
-                evt.setEventLog(evento);
                 logger = writeLog(log, "BluetoothAdapter.txt");
-                showToast(showToastLog);
             }
             if(action.equals(BluetoothAdapter.ERROR)){
                 log += String.valueOf(BluetoothAdapter.ERROR);
                 evento = "<font color='red'>BluetoothAdapter.ERROR";
                 log += logAdapter(uriData,evento);
                 evt.setEventLog(evento);
-                showToastLog = "BluetoothAdapter.ERROR";
                 logger = writeLog(log, "BluetoothAdapter.txt");
-                showToast(showToastLog);
             }
             if(action.equals(BluetoothDevice.ACTION_FOUND)){
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
@@ -466,16 +462,12 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
                 logger = writeLog(log, "BluetoothAdapter.txt");
-                showToastLog = "BluetoothDevice."+BluetoothDevice.EXTRA_NAME+" - "+BluetoothDevice.ACTION_ACL_CONNECTED;
-                showToast(showToastLog);
-            }
+           }
             if(action.equals(BluetoothDevice.ACTION_ACL_DISCONNECTED)) {
                 log += logAdapter(uriData,"BluetoothDevice."+BluetoothDevice.EXTRA_NAME+" - "+BluetoothDevice.ACTION_ACL_DISCONNECTED);
                 evento = "<font color='green'>BluetoothDevice.ACTION_ACL_DISCONNECTED";
                 evt.setEventLog(evento);
                 logger = writeLog(log, "BluetoothAdapter.txt");
-                showToastLog = "BluetoothDevice."+BluetoothDevice.EXTRA_NAME+" - "+BluetoothDevice.ACTION_ACL_DISCONNECTED;
-                showToast(showToastLog);
             }
             if(action.equals(BluetoothDevice.ACTION_PAIRING_REQUEST)) {
                 Log.d("ACTION_ACL_CONNECTED","Entró a ACTION_PAIRING_REQUEST");
